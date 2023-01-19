@@ -1,8 +1,11 @@
+import { BgImage, Main } from "./components";
+
 function App() {
   return (
-    <div>
-      <h1 className="font-bold text-red-500">Hello</h1>
-    </div>
+    <main className="min-h-screen bg-light">
+      <BgImage />
+      <Main />
+    </main>
   );
 }
 
