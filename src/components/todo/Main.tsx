@@ -5,7 +5,7 @@ import Tabs from "./todo-list/Tabs";
 
 const Main = () => {
   return (
-    <section className="relative -mt-[11rem] mx-auto w-[90vw]">
+    <section className="relative -mt-[11rem] mx-auto w-[90vw] max-w-2xl">
       <Navbar />
       <Input />
       <TodoList />
