@@ -9,3 +9,9 @@
     font-family: "Josefin Sans", sans-serif;
   }
 }
+
+@layer utilities {
+  .checkbox {
+    @apply rounded-full border-none relative top-[-0.05rem] z-20 bg-transparent text-transparent focus:ring-2 focus:ring-offset-2 w-[25px] h-[25px] cursor-pointer;
+  }
+}
