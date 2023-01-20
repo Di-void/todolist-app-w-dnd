@@ -1,6 +1,6 @@
 const Input = () => {
   return (
-    <form className="px-4 py-2 mt-8 bg-elem-light flex items-center gap-x-3 rounded-md">
+    <form className="px-4 py-2 mt-8 bg-elem-light dark:bg-elem-dark-1 flex items-center gap-x-3 rounded-md">
       {/* checkbox */}
       <div className="rounded-full relative">
         <input type="checkbox" className="checkbox peer" />
@@ -13,7 +13,7 @@ const Input = () => {
         <input
           type="text"
           placeholder="Create a new todo..."
-          className="border-none focus:ring-0 w-full px-0 py-2"
+          className="border-none focus:ring-0 w-full px-0 py-2 dark:bg-elem-dark-1 dark:placeholder:text-light-txt-1 dark:caret-active-blue dark:text-dark-txt-2"
         />
       </div>
     </form>

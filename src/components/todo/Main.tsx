@@ -11,7 +11,9 @@ const Main = () => {
       <TodoList />
       <Tabs />
       <footer className="mx-auto w-fit mt-6">
-        <p className="text-light-txt-1">Drag and drop to reorder list</p>
+        <p className="text-light-txt-1 dark:text-light-txt-2">
+          Drag and drop to reorder list
+        </p>
       </footer>
     </section>
   );
