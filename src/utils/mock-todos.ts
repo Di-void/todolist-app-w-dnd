@@ -1,6 +1,6 @@
 import type { Todo } from "../types/todo";
 
-export const todos: Todo[] = [
+export const mockTodos: Todo[] = [
   {
     id: "t1",
     todo: "Complete online Javascript course",

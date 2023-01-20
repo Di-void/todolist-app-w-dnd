@@ -2,14 +2,15 @@ import { Todo } from "../../../types/todo";
 
 interface ListItemProps {
   todo: Todo["todo"];
+  status: Todo["status"];
 }
 
 const ListItem: React.FC<ListItemProps> = ({ todo }) => {
   return (
     <div className="flex items-center gap-x-4 px-4 py-4 group">
       <div className="rounded-full relative" title="complete">
-        <input type="checkbox" className="checkbox peer/check" />
-        <div className="w-[25px] h-[25px] border border-gray-500 absolute top-0 rounded-full z-0 peer-checked/check:bg-gradient-to-r from-grad-color-1 to-grad-color-2">
+        <input type="checkbox" className="checkbox peer" />
+        <div className="w-[25px] h-[25px] border border-gray-500 absolute top-0 rounded-full z-0 peer-checked:border-none peer-checked:bg-gradient-to-r from-grad-color-1 to-grad-color-2">
           &nbsp;
         </div>
       </div>
@@ -20,7 +21,7 @@ const ListItem: React.FC<ListItemProps> = ({ todo }) => {
         {todo}
       </p>
       <button
-        className="text-light-txt-2 dark:text-light-txt-1 basis-1/12 flex place-content-center opacity-0 group-hover:opacity-100 transition-all duration-150"
+        className="text-light-txt-2 dark:text-light-txt-1 basis-1/12 flex place-content-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-150"
         title="Remove"
       >
         <svg
