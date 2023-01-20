@@ -13,7 +13,7 @@ const Input = () => {
         <input
           type="text"
           placeholder="Create a new todo..."
-          className="border-none focus:ring-0 w-full px-0 py-2 dark:bg-elem-dark-1 dark:placeholder:text-light-txt-1 dark:caret-active-blue dark:text-dark-txt-2"
+          className="border-none focus:ring-0 w-full px-0 py-2 dark:bg-elem-dark-1 dark:placeholder:text-shadow-light dark:caret-active-blue dark:text-light-txt-1"
         />
       </div>
     </form>

@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
-import { atomWithStorage, RESET } from "jotai/utils";
+import { atomWithStorage } from "jotai/utils";
 import { HiSun, HiMoon } from "react-icons/hi";
-import { checkTheme, Theme } from "../../../utils/theme";
+import { switchTheme, Theme } from "../../../utils/theme";
 
 export const themeAtom = atomWithStorage<Theme>("theme", "light");
 
@@ -10,15 +10,13 @@ const iconSize = 25;
 const Navbar = () => {
   const [theme, setTheme] = useAtom(themeAtom);
 
-  checkTheme(theme);
+  switchTheme(theme);
 
   const toggleTheme = () => {
     if (theme === "light") {
       setTheme("dark");
-      document.documentElement.classList.add("dark");
     } else {
       setTheme("light");
-      document.documentElement.classList.add("light");
     }
   };
 
@@ -30,7 +28,7 @@ const Navbar = () => {
         TODO
       </h3>
 
-      <button className="" title={setTitle()} onClick={toggleTheme}>
+      <button title={setTitle()} onClick={toggleTheme}>
         {theme === "light" ? (
           <HiMoon size={iconSize} color="white" />
         ) : (

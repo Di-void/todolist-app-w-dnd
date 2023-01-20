@@ -1,6 +1,6 @@
 export type Theme = "dark" | "light";
 
-export const checkTheme = (theme: Theme) => {
+export const switchTheme = (theme: Theme) => {
   if (theme === "dark") {
     document.documentElement.classList.add("dark");
     document.documentElement.classList.remove("light");

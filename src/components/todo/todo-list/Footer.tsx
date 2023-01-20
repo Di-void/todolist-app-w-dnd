@@ -10,7 +10,7 @@ const Footer = () => {
       {/*  */}
       {/* end status tabs (visible from tablet view) */}
 
-      <button className="capitalize text-shadow-light hover:text-shadow-dark transition-all duration-150">
+      <button className="capitalize text-shadow-light hover:text-shadow-dark dark:hover:text-light-txt-1 transition-all duration-150">
         clear completed
       </button>
     </footer>

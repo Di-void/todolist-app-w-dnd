@@ -18,6 +18,7 @@ module.exports = {
         // "light-txt-1": "hsl(236, 9%, 61%)",
         "light-txt-2": "hsl(235, 19%, 35%)",
         "light-txt-3": "hsl(236, 33%, 92%)",
+        "light-txt-4": "hsl(234, 11%, 52%)",
         "dark-txt-1": "hsl(236, 9%, 61%)",
         "dark-txt-2": "hsl(234, 39%, 85%)",
         "shadow-light": "hsl(236, 9%, 61%)",
