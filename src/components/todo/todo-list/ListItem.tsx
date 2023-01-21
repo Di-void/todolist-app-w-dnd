@@ -1,21 +1,43 @@
 import { Todo } from "../../../types/todo";
+import clsx from "clsx";
 
 interface ListItemProps {
+  id: Todo["id"];
   todo: Todo["todo"];
   status: Todo["status"];
+  setTodoStatus: (id: Todo["id"]) => void;
 }
 
-const ListItem: React.FC<ListItemProps> = ({ todo }) => {
+const ListItem: React.FC<ListItemProps> = ({
+  id,
+  todo,
+  status,
+  setTodoStatus,
+}) => {
+  const mappedStatus = status === "active" ? false : true;
+  const handleChange = () => {
+    setTodoStatus(id);
+  };
+
   return (
     <div className="flex items-center gap-x-4 px-4 py-4 group">
       <div className="rounded-full relative" title="complete">
-        <input type="checkbox" className="checkbox peer" />
+        <input
+          type="checkbox"
+          className="checkbox peer"
+          checked={mappedStatus}
+          onChange={handleChange}
+        />
         <div className="w-[25px] h-[25px] border border-gray-500 absolute top-0 rounded-full z-0 peer-checked:border-none peer-checked:bg-gradient-to-r from-grad-color-1 to-grad-color-2">
           &nbsp;
         </div>
       </div>
       <p
-        className="basis-4/5 text-shadow-dark dark:text-light-txt-1"
+        className={clsx(
+          "basis-4/5 text-shadow-dark dark:text-light-txt-1",
+          status === "complete" &&
+            "line-through text-dark-txt-1 dark:text-light-txt-4"
+        )}
         title={todo}
       >
         {todo}

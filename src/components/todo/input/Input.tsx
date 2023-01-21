@@ -48,7 +48,7 @@ const Input = () => {
         <input
           type="text"
           placeholder="Create a new todo..."
-          className="border-none focus:ring-0 w-full px-0 py-2 dark:bg-elem-dark-1 dark:placeholder:text-shadow-light dark:caret-active-blue dark:text-light-txt-1"
+          className="border-none focus:ring-0 w-full px-0 py-2 dark:bg-elem-dark-1 dark:placeholder:text-shadow-light dark:caret-active-blue text-shadow-dark dark:text-light-txt-1"
           ref={inputRef}
         />
       </div>

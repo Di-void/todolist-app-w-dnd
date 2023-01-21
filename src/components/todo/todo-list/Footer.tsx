@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="border-t border-shadow-light px-4 py-4 flex justify-between">
+    <footer className="px-4 py-4 flex justify-between">
       <h4 className="text-shadow-light">
         {" "}
         <span>5</span> items left

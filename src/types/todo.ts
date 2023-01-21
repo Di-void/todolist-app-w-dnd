@@ -1,9 +1,5 @@
 export type Status = "complete" | "active";
 
-export type statusLookUp = {
-  [k in Status]: boolean;
-};
-
 export interface Todo {
   id: string;
   todo: string;
@@ -14,12 +10,11 @@ export type Input = Omit<Todo, "id">;
 
 export type State = {
   todos: Todo[];
-  active: number;
+  active: boolean;
 };
 
 export type Actions = {
-  // getAllTodos: () => Todo[];
-  getActiveTodos: () => void;
+  getActiveTodos: () => Todo[];
   getComletedTodos: () => Todo[];
   deleteCompletedTodos: () => void;
   addTodo: (payload: Input) => void;
