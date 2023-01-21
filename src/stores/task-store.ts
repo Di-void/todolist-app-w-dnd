@@ -5,8 +5,8 @@ import type { Actions, State, Todo, Input } from "../types/todo";
 
 export const useTaskStore = create(
   immer<State & Actions>((set, get) => ({
-    todos: [],
-    active: false,
+    todos: mockTodos,
+    active: 0,
     addTodo: (payload: Input): void => {
       set((state) => {
         state.todos.push({
@@ -15,6 +15,7 @@ export const useTaskStore = create(
         });
         state.todos.reverse();
       });
+      get().updateActive();
     },
     setTodoStatus: (id: string): void => {
       set((state) => {
@@ -30,22 +31,22 @@ export const useTaskStore = create(
           return item;
         });
       });
+      get().updateActive();
+    },
+    updateActive: () => {
+      set((state) => {
+        state.active = state.getActiveTodos().length;
+      });
     },
     getActiveTodos: (): Todo[] => {
       const activeTodos = get().todos.filter((todo) => {
-        if (todo.status === "active") {
-          return true;
-        }
-        return false;
+        return todo.status === "active";
       });
       return activeTodos;
     },
     getComletedTodos: (): Todo[] => {
       const completeTodos = get().todos.filter((todo) => {
-        if (todo.status === "complete") {
-          return true;
-        }
-        return false;
+        return todo.status === "complete";
       });
       return completeTodos;
     },

@@ -1,9 +1,13 @@
-const Footer = () => {
+interface FooterProps {
+  active: number;
+}
+
+const Footer = ({ active }: FooterProps) => {
   return (
     <footer className="px-4 py-4 flex justify-between">
       <h4 className="text-shadow-light">
         {" "}
-        <span>5</span> items left
+        <span>{active}</span> items left
       </h4>
 
       {/* status tabs (visible from tablet view) */}
