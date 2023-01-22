@@ -19,7 +19,7 @@ export const useTaskStore = create(
     },
     setTodoStatus: (id: string): void => {
       set((state) => {
-        state.todos = get().todos.map((item) => {
+        state.todos = state.todos.map((item) => {
           if (item.id === id) {
             return { ...item, complete: !item.complete };
           }
@@ -47,15 +47,16 @@ export const useTaskStore = create(
     },
     deleteTodo: (id: string): void => {
       set((state) => {
-        state.todos.filter((item) => {
+        state.todos = state.todos.filter((item) => {
           if (item.id !== id) return true;
           return false;
         });
       });
+      get().updateActive();
     },
     deleteCompletedTodos: (): void => {
       set((state) => {
-        state.todos.filter((item) => {
+        state.todos = state.todos.filter((item) => {
           return item.complete === false;
         });
       });

@@ -1,6 +1,6 @@
 import { useTaskStore } from "../../../stores/task-store";
 import { useState, useRef } from "react";
-import type { Input, Status } from "../../../types/todo";
+import type { Input } from "../../../types/todo";
 
 const Input = () => {
   const inputRef = useRef<HTMLInputElement>(null);

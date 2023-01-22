@@ -1,4 +1,5 @@
 import { formatItemsLeftText } from "../../../utils/misc";
+import TabButtons from "./TabButtons";
 
 interface FooterProps {
   active: number;
@@ -14,15 +15,7 @@ const Footer = ({ active }: FooterProps) => {
 
       {/* status tabs (visible from tablet view) */}
       <div className="hidden md:flex gap-x-6">
-        <button className="capitalize text-light-txt-4 dark:text-shadow-light hover:text-shadow-dark dark:hover:text-light-txt-1 transition-all duration-150 font-semibold">
-          all
-        </button>
-        <button className="capitalize text-light-txt-4 dark:text-shadow-light hover:text-shadow-dark dark:hover:text-light-txt-1 transition-all duration-150 font-semibold">
-          active
-        </button>
-        <button className="capitalize text-light-txt-4 dark:text-shadow-light hover:text-shadow-dark dark:hover:text-light-txt-1 transition-all duration-150 font-semibold">
-          completed
-        </button>
+        <TabButtons />
       </div>
       {/* end status tabs (visible from tablet view) */}
 

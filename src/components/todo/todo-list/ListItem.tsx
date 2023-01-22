@@ -1,5 +1,6 @@
 import { Todo } from "../../../types/todo";
 import clsx from "clsx";
+import { useTaskStore } from "../../../stores/task-store";
 
 interface ListItemProps {
   id: Todo["id"];
@@ -14,6 +15,7 @@ const ListItem: React.FC<ListItemProps> = ({
   complete,
   setTodoStatus,
 }) => {
+  const deleteTodo = useTaskStore((state) => state.deleteTodo);
   const handleChange = () => {
     setTodoStatus(id);
   };
@@ -43,6 +45,7 @@ const ListItem: React.FC<ListItemProps> = ({
       <button
         className="text-light-txt-2 dark:text-light-txt-1 basis-1/12 flex place-content-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-150"
         title="Remove"
+        onClick={() => deleteTodo(id)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

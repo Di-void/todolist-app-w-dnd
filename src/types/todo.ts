@@ -14,6 +14,7 @@ export type State = {
 };
 
 export type Actions = {
+  // getAllTodos: () => void;
   getActiveTodos: () => Todo[];
   getComletedTodos: () => Todo[];
   deleteCompletedTodos: () => void;
