@@ -16,7 +16,7 @@ const TodoList = () => {
   return (
     <article className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black">
       <ul>
-        {todos.map(({ id, todo, status }) => {
+        {todos.map(({ id, todo, complete }) => {
           return (
             <li
               key={id}
@@ -25,7 +25,7 @@ const TodoList = () => {
               <ListItem
                 id={id}
                 todo={todo}
-                status={status}
+                complete={complete}
                 setTodoStatus={setTodoStatus}
               />
             </li>

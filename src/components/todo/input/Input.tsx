@@ -11,12 +11,10 @@ const Input = () => {
 
   const addNewTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const mappedTodoStatus: Status =
-      todoStatus === true ? "complete" : "active";
     if (inputRef.current?.value) {
       addTodo({
         todo: inputRef.current.value,
-        status: mappedTodoStatus,
+        complete: todoStatus,
       });
       inputRef.current.value = "";
       setTodoStatus(false);

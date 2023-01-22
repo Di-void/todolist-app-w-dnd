@@ -4,31 +4,31 @@ export const mockTodos: Todo[] = [
   {
     id: "t1",
     todo: "Complete online Javascript course",
-    status: "complete",
+    complete: true,
   },
   {
     id: "t2",
     todo: "Jog around the park 3x",
-    status: "active",
+    complete: false,
   },
   {
     id: "t3",
     todo: "10 minutes meditation",
-    status: "active",
+    complete: false,
   },
   {
     id: "t4",
     todo: "Read for 1 hour",
-    status: "active",
+    complete: false,
   },
   {
     id: "t5",
     todo: "Pick up groceries",
-    status: "active",
+    complete: false,
   },
   {
     id: "t6",
     todo: "Complete Todo App on Frontend Mentor",
-    status: "active",
+    complete: false,
   },
 ];

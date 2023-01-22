@@ -4,17 +4,16 @@ import clsx from "clsx";
 interface ListItemProps {
   id: Todo["id"];
   todo: Todo["todo"];
-  status: Todo["status"];
+  complete: Todo["complete"];
   setTodoStatus: (id: Todo["id"]) => void;
 }
 
 const ListItem: React.FC<ListItemProps> = ({
   id,
   todo,
-  status,
+  complete,
   setTodoStatus,
 }) => {
-  const mappedStatus = status === "active" ? false : true;
   const handleChange = () => {
     setTodoStatus(id);
   };
@@ -25,7 +24,7 @@ const ListItem: React.FC<ListItemProps> = ({
         <input
           type="checkbox"
           className="checkbox peer"
-          checked={mappedStatus}
+          checked={complete}
           onChange={handleChange}
         />
         <div className="w-[25px] h-[25px] border border-gray-500 absolute top-0 rounded-full z-0 peer-checked:border-none peer-checked:bg-gradient-to-r from-grad-color-1 to-grad-color-2">
@@ -35,8 +34,7 @@ const ListItem: React.FC<ListItemProps> = ({
       <p
         className={clsx(
           "basis-4/5 text-shadow-dark dark:text-light-txt-1",
-          status === "complete" &&
-            "line-through text-dark-txt-1 dark:text-light-txt-4"
+          complete && "line-through text-dark-txt-1 dark:text-light-txt-4"
         )}
         title={todo}
       >

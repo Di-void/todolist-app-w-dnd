@@ -1,9 +1,9 @@
-export type Status = "complete" | "active";
+export type Status = boolean;
 
 export interface Todo {
   id: string;
   todo: string;
-  status: Status;
+  complete: Status;
 }
 
 export type Input = Omit<Todo, "id">;
