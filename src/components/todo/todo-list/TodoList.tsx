@@ -14,7 +14,7 @@ const TodoList = () => {
   console.log(todos);
   return (
     <article className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black">
-      <ul>
+      <ul className="flex flex-col-reverse">
         {todos.map(({ id, todo, complete }) => {
           return (
             <li

@@ -13,7 +13,6 @@ export const useTaskStore = create(
           id: crypto.randomUUID(),
           ...payload,
         });
-        state.todos.reverse();
       });
       get().updateActive();
     },
