@@ -1,3 +1,5 @@
+import { formatItemsLeftText } from "../../../utils/misc";
+
 interface FooterProps {
   active: number;
 }
@@ -7,7 +9,7 @@ const Footer = ({ active }: FooterProps) => {
     <footer className="px-4 py-4 flex justify-between">
       <h4 className="text-shadow-light">
         {" "}
-        <span>{active}</span> items left
+        <span>{active}</span> {formatItemsLeftText(active)} left
       </h4>
 
       {/* status tabs (visible from tablet view) */}

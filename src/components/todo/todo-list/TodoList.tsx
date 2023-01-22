@@ -1,4 +1,3 @@
-import { mockTodos } from "../../../utils/mock-todos";
 import { useEffect } from "react";
 import Footer from "./Footer";
 import ListItem from "./ListItem";

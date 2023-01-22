@@ -11,3 +11,7 @@ export const switchTheme = (theme: Theme) => {
     document.documentElement.classList.add("light");
   }
 };
+
+export const formatItemsLeftText = (active: number): string => {
+  return active === 0 || active > 1 ? `items` : `item`;
+};
