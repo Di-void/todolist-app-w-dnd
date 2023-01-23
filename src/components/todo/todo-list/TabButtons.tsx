@@ -1,13 +1,14 @@
 import { useState } from "react";
 import clsx from "clsx";
-// import { useTaskStore } from "../../../stores/task-store";
+import { useTaskStore } from "../../../stores/task-store";
 const btns = ["all", "active", "completed"] as const;
 type Tabs = "all" | "active" | "completed";
 
 const TabButtons = () => {
   const [value, setValue] = useState(0);
-  // const getActiveTodos = useTaskStore((state) => state.getActiveTodos);
-  // const getCompletedTodos = useTaskStore((state) => state.getComletedTodos);
+  const getAllTodos = useTaskStore((state) => state.getAllTodos);
+  const getActiveTodos = useTaskStore((state) => state.getActiveTodos);
+  const getCompletedTodos = useTaskStore((state) => state.getComletedTodos);
   const handleChange = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     index: number
@@ -15,12 +16,15 @@ const TabButtons = () => {
     const value = e.currentTarget.dataset.id as Tabs;
     console.log(value);
 
-    // if (value === "active") {
-    //   getActiveTodos();
-    // }
-    // if (value === "completed") {
-    //   getCompletedTodos();
-    // }
+    if (value === "active") {
+      getActiveTodos();
+    }
+    if (value === "completed") {
+      getCompletedTodos();
+    }
+    if (value === "all") {
+      getAllTodos();
+    }
 
     setValue(index);
   };
