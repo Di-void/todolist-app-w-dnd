@@ -3,7 +3,6 @@ import { immer } from "zustand/middleware/immer";
 import { mockTodos } from "../utils/mock-todos";
 import { changeTodoStatusHelper } from "../utils/misc";
 import type { Actions, State, Todo, Input } from "../types/todo";
-import { iteratorSymbol } from "immer/dist/internal";
 
 export const useTaskStore = create(
   immer<State & Actions>((set, get) => ({
@@ -26,59 +25,26 @@ export const useTaskStore = create(
     setTodoStatus: (id: string): void => {
       set((state) => {
         if (state.activeTab === "all") {
-          state.todos = get().allTodos.map((item) => {
-            if (item.id === id) {
-              return { ...item, complete: !item.complete };
-            }
-            return item;
-          });
+          state.todos = changeTodoStatusHelper(get().allTodos, id);
           state.allTodos = state.todos;
         } else if (state.activeTab === "active") {
-          state.todos = get().activeTodos.map((item) => {
-            if (item.id === id) {
-              return { ...item, complete: !item.complete };
-            }
-            return item;
-          });
+          state.todos = changeTodoStatusHelper(state.activeTodos, id);
           state.activeTodos = state.todos;
           // all todos
-          state.allTodos = state.allTodos.map((todo) => {
-            if (todo.id === id) {
-              return { ...todo, complete: !todo.complete };
-            }
-            return todo;
-          });
+          state.allTodos = changeTodoStatusHelper(state.allTodos, id);
           // completed todos
-          state.completedTodos = state.completedTodos.map((todo) => {
-            if (todo.id === id) {
-              return { ...todo, complete: !todo.complete };
-            }
-            return todo;
-          });
-          // state.activeTodos = state.todos;
+          state.completedTodos = changeTodoStatusHelper(
+            state.completedTodos,
+            id
+          );
         } else {
-          state.todos = get().completedTodos.map((item) => {
-            if (item.id === id) {
-              return { ...item, complete: !item.complete };
-            }
-            return item;
-          });
+          state.todos = changeTodoStatusHelper(state.completedTodos, id);
 
           state.completedTodos = state.todos;
           // all todos
-          state.allTodos = state.allTodos.map((todo) => {
-            if (todo.id === id) {
-              return { ...todo, complete: !todo.complete };
-            }
-            return todo;
-          });
+          state.allTodos = changeTodoStatusHelper(state.allTodos, id);
           // active todos
-          state.activeTodos = state.activeTodos.map((todo) => {
-            if (todo.id === id) {
-              return { ...todo, complete: !todo.complete };
-            }
-            return todo;
-          });
+          state.activeTodos = changeTodoStatusHelper(state.activeTodos, id);
         }
       });
       get().updateActive();
