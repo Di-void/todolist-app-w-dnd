@@ -14,8 +14,11 @@ const TabButtons = () => {
     index: number
   ) => {
     const value = e.currentTarget.dataset.id as Tabs;
+<<<<<<< HEAD
+=======
     console.log(value);
 
+>>>>>>> b9c94c1c08dc6f9306f5a3d5f5837cae5f89777d
     if (value === "active") {
       getActiveTodos();
     }
@@ -25,7 +28,10 @@ const TabButtons = () => {
     if (value === "all") {
       getAllTodos();
     }
+<<<<<<< HEAD
+=======
 
+>>>>>>> b9c94c1c08dc6f9306f5a3d5f5837cae5f89777d
     setValue(index);
   };
   return (

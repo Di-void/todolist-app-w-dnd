@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { mockTodos } from "../utils/mock-todos";
+import { changeTodoStatusHelper } from "../utils/misc";
 import type { Actions, State, Todo, Input } from "../types/todo";
 
 export const useTaskStore = create(
@@ -23,18 +24,40 @@ export const useTaskStore = create(
     },
     setTodoStatus: (id: string): void => {
       set((state) => {
-        state.todos = state.todos.map((item) => {
-          if (item.id === id) {
-            return { ...item, complete: !item.complete };
-          }
-          return item;
-        });
+        if (state.activeTab === "all") {
+          state.todos = changeTodoStatusHelper(get().allTodos, id);
+          state.allTodos = state.todos;
+        } else if (state.activeTab === "active") {
+          state.todos = changeTodoStatusHelper(state.activeTodos, id);
+          state.activeTodos = state.todos;
+          // all todos
+          state.allTodos = changeTodoStatusHelper(state.allTodos, id);
+          // completed todos
+          state.completedTodos = changeTodoStatusHelper(
+            state.completedTodos,
+            id
+          );
+        } else {
+          state.todos = changeTodoStatusHelper(state.completedTodos, id);
+
+          state.completedTodos = state.todos;
+          // all todos
+          state.allTodos = changeTodoStatusHelper(state.allTodos, id);
+          // active todos
+          state.activeTodos = changeTodoStatusHelper(state.activeTodos, id);
+        }
       });
       get().updateActive();
     },
     updateActive: () => {
       set((state) => {
-        state.active = state.getActiveTodos().length;
+        const activeTodos = state.allTodos.reduce((acc, item) => {
+          if (item.complete === false) {
+            return acc + 1;
+          }
+          return acc;
+        }, 0);
+        state.active = activeTodos;
       });
     },
     getAllTodos: (): void => {
@@ -43,22 +66,21 @@ export const useTaskStore = create(
         state.activeTab = "all";
       });
     },
-    getActiveTodos: (): Todo[] => {
-      const activeTodos = get().allTodos.filter((todo) => {
-        return todo.complete === false;
-      });
+    getActiveTodos: (): void => {
       set((state) => {
+        const activeTodos = state.allTodos.filter((todo) => {
+          return todo.complete === false;
+        });
         state.activeTodos = activeTodos;
         state.todos = state.activeTodos;
         state.activeTab = "active";
       });
-      return activeTodos;
     },
     getComletedTodos: (): void => {
-      const completedTodos = get().allTodos.filter((todo) => {
-        return todo.complete === true;
-      });
       set((state) => {
+        const completedTodos = state.allTodos.filter((todo) => {
+          return todo.complete === true;
+        });
         state.completedTodos = completedTodos;
         state.todos = state.completedTodos;
         state.activeTab = "completed";

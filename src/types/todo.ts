@@ -19,7 +19,7 @@ export type State = {
 
 export type Actions = {
   getAllTodos: () => void;
-  getActiveTodos: () => Todo[];
+  getActiveTodos: () => void;
   getComletedTodos: () => void;
   deleteCompletedTodos: () => void;
   addTodo: (payload: Input) => void;
