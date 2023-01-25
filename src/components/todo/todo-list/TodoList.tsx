@@ -15,12 +15,9 @@ const TodoList = () => {
     updateActive();
   }, []);
   console.log(todos);
-  // console.log(activeTab);
 
   return (
     <article className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black">
-      {/* conditional rendering */}
-
       {
         <ul className="flex flex-col-reverse">
           {activeTab === "active" ? (
