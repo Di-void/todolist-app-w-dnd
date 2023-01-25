@@ -18,7 +18,17 @@ export const useTaskStore = create(
           id: crypto.randomUUID(),
           ...payload,
         });
-        state.todos = state.allTodos;
+        if (state.activeTab === "all") {
+          state.todos = state.allTodos;
+        } else if (state.activeTab === "active") {
+          state.todos = state.allTodos.filter((todo) => {
+            return todo.complete === false;
+          });
+        } else {
+          state.todos = state.allTodos.filter((todo) => {
+            return todo.complete === true;
+          });
+        }
       });
       get().updateActive();
     },
@@ -74,7 +84,7 @@ export const useTaskStore = create(
         state.activeTab = "all";
       });
     },
-    getActiveTodos: (): void => {
+    setActiveTodos: (): void => {
       set((state) => {
         const activeTodos = state.allTodos.filter((todo) => {
           return todo.complete === false;
@@ -84,7 +94,7 @@ export const useTaskStore = create(
         state.activeTab = "active";
       });
     },
-    getComletedTodos: (): void => {
+    setComletedTodos: (): void => {
       set((state) => {
         const completedTodos = state.allTodos.filter((todo) => {
           return todo.complete === true;

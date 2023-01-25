@@ -7,8 +7,8 @@ type Tabs = "all" | "active" | "completed";
 const TabButtons = () => {
   const [value, setValue] = useState(0);
   const getAllTodos = useTaskStore((state) => state.getAllTodos);
-  const getActiveTodos = useTaskStore((state) => state.getActiveTodos);
-  const getCompletedTodos = useTaskStore((state) => state.getComletedTodos);
+  const setActiveTodos = useTaskStore((state) => state.setActiveTodos);
+  const setCompletedTodos = useTaskStore((state) => state.setComletedTodos);
   const handleChange = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     index: number
@@ -16,10 +16,10 @@ const TabButtons = () => {
     const value = e.currentTarget.dataset.id as Tabs;
 
     if (value === "active") {
-      getActiveTodos();
+      setActiveTodos();
     }
     if (value === "completed") {
-      getCompletedTodos();
+      setCompletedTodos();
     }
     if (value === "all") {
       getAllTodos();
