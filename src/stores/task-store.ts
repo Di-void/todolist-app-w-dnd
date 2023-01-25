@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { mockTodos } from "../utils/mock-todos";
-import { changeTodoStatusHelper } from "../utils/misc";
+import { changeTodoStatusHelper, deleteTodoHelper } from "../utils/misc";
 import type { Actions, State, Todo, Input } from "../types/todo";
 
 export const useTaskStore = create(
@@ -97,38 +97,24 @@ export const useTaskStore = create(
     deleteTodo: (id: string): void => {
       set((state) => {
         if (state.activeTab === "all") {
-          state.todos = state.todos.filter((item) => {
-            return item.id !== id;
-          });
+          state.todos = deleteTodoHelper(state.todos, id);
           state.allTodos = state.todos;
         } else if (state.activeTab === "active") {
-          state.activeTodos = state.activeTodos.filter((item) => {
-            return item.id !== id;
-          });
+          state.activeTodos = deleteTodoHelper(state.activeTodos, id);
           state.todos = state.activeTodos;
 
           // update all todos
-          state.allTodos = state.allTodos.filter((item) => {
-            return item.id !== id;
-          });
+          state.allTodos = deleteTodoHelper(state.allTodos, id);
           // update completed todos
-          state.completedTodos = state.completedTodos.filter((item) => {
-            return item.id !== id;
-          });
+          state.completedTodos = deleteTodoHelper(state.completedTodos, id);
         } else {
-          state.completedTodos = state.completedTodos.filter((item) => {
-            return item.id !== id;
-          });
+          state.completedTodos = deleteTodoHelper(state.completedTodos, id);
           state.todos = state.completedTodos;
 
           // update all todos
-          state.allTodos = state.allTodos.filter((item) => {
-            return item.id !== id;
-          });
+          state.allTodos = deleteTodoHelper(state.allTodos, id);
           // update active todos
-          state.activeTodos = state.activeTodos.filter((item) => {
-            return item.id !== id;
-          });
+          state.activeTodos = deleteTodoHelper(state.activeTodos, id);
         }
       });
       get().updateActive();

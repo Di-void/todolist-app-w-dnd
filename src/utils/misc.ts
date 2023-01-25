@@ -38,3 +38,16 @@ export const changeTodoStatusHelper = (arr: Todo[], id: string) => {
   });
   return newArr;
 };
+
+/**
+ *
+ * @param {Todo[]} arr - The Array of Todo's
+ * @param {string} id - The unique id of the todo
+ * @returns {Todo[]} A new array without the todo with the given id
+ */
+export const deleteTodoHelper = (arr: Todo[], id: string) => {
+  const newArr: Todo[] = arr.filter((item) => {
+    return item.id !== id;
+  });
+  return newArr;
+};
