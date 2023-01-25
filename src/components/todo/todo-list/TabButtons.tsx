@@ -14,6 +14,7 @@ const TabButtons = () => {
     index: number
   ) => {
     const value = e.currentTarget.dataset.id as Tabs;
+
     if (value === "active") {
       getActiveTodos();
     }
