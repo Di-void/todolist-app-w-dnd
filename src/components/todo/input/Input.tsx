@@ -23,6 +23,7 @@ const Input = () => {
 
   const handleStatusChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoStatus(e.target.checked);
+    inputRef.current?.focus();
   };
   return (
     <form
