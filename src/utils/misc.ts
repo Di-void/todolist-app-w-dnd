@@ -1,5 +1,9 @@
 import type { Tabs, Todo, Theme } from "../types/todo";
 
+/**
+ * Helper function for switching themes
+ * @param {Theme} theme - Current theme
+ */
 export const switchTheme = (theme: Theme) => {
   if (theme === "dark") {
     document.documentElement.classList.add("dark");
@@ -12,6 +16,11 @@ export const switchTheme = (theme: Theme) => {
   }
 };
 
+/**
+ * Helper for formatting 'items left' text
+ * @param {number} active - The number of active todos
+ * @returns formatted text depending on the number passed in
+ */
 export const formatItemsLeftText = (active: number): string => {
   return active === 0 || active > 1 ? `items` : `item`;
 };
@@ -47,8 +56,8 @@ export const deleteTodoHelper = (arr: Todo[], id: string) => {
 
 /**
  * Helper for getting all todo's of a particular category i.e (all, active or completed)
- * @param {Todo[]} arr
- * @param {Tabs} tab
+ * @param {Todo[]} arr - Array of all Todos
+ * @param {Tabs} tab - The active tab
  * @returns Array of Todos for a particular category according to the tab specified
  */
 export const getTodos = (arr: Todo[], tab: Tabs) => {
