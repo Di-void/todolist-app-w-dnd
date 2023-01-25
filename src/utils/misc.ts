@@ -38,6 +38,3 @@ export const changeTodoStatusHelper = (arr: Todo[], id: string) => {
   });
   return newArr;
 };
-
-// store todo array to localStorage
-export const updateLocalStorageState = (): void => {};

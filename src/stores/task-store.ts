@@ -96,10 +96,40 @@ export const useTaskStore = create(
     },
     deleteTodo: (id: string): void => {
       set((state) => {
-        state.todos = state.todos.filter((item) => {
-          if (item.id !== id) return true;
-          return false;
-        });
+        if (state.activeTab === "all") {
+          state.todos = state.todos.filter((item) => {
+            return item.id !== id;
+          });
+          state.allTodos = state.todos;
+        } else if (state.activeTab === "active") {
+          state.activeTodos = state.activeTodos.filter((item) => {
+            return item.id !== id;
+          });
+          state.todos = state.activeTodos;
+
+          // update all todos
+          state.allTodos = state.allTodos.filter((item) => {
+            return item.id !== id;
+          });
+          // update completed todos
+          state.completedTodos = state.completedTodos.filter((item) => {
+            return item.id !== id;
+          });
+        } else {
+          state.completedTodos = state.completedTodos.filter((item) => {
+            return item.id !== id;
+          });
+          state.todos = state.completedTodos;
+
+          // update all todos
+          state.allTodos = state.allTodos.filter((item) => {
+            return item.id !== id;
+          });
+          // update active todos
+          state.activeTodos = state.activeTodos.filter((item) => {
+            return item.id !== id;
+          });
+        }
       });
       get().updateActive();
     },
