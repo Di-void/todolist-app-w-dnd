@@ -28,22 +28,30 @@ export const useTaskStore = create(
           state.todos = changeTodoStatusHelper(get().allTodos, id);
           state.allTodos = state.todos;
         } else if (state.activeTab === "active") {
-          state.todos = changeTodoStatusHelper(state.activeTodos, id);
-          state.activeTodos = state.todos;
-          // all todos
+          state.activeTodos = changeTodoStatusHelper(state.activeTodos, id);
+          state.todos = state.activeTodos.filter((todo) => {
+            return todo.complete === false;
+          });
+
+          // update all todos
           state.allTodos = changeTodoStatusHelper(state.allTodos, id);
-          // completed todos
+          // update completed todos
           state.completedTodos = changeTodoStatusHelper(
             state.completedTodos,
             id
           );
         } else {
-          state.todos = changeTodoStatusHelper(state.completedTodos, id);
+          state.completedTodos = changeTodoStatusHelper(
+            state.completedTodos,
+            id
+          );
+          state.todos = state.completedTodos.filter((todo) => {
+            return todo.complete === true;
+          });
 
-          state.completedTodos = state.todos;
-          // all todos
+          // update all todos
           state.allTodos = changeTodoStatusHelper(state.allTodos, id);
-          // active todos
+          // update active todos
           state.activeTodos = changeTodoStatusHelper(state.activeTodos, id);
         }
       });
