@@ -1,11 +1,4 @@
-import type { Todo } from "../types/todo";
-export type Theme = "dark" | "light";
-
-export type TodoCache = {
-  all: Todo[];
-  active: Todo[];
-  completed: Todo[];
-};
+import type { Tabs, Todo, Theme } from "../types/todo";
 
 export const switchTheme = (theme: Theme) => {
   if (theme === "dark") {
@@ -40,7 +33,7 @@ export const changeTodoStatusHelper = (arr: Todo[], id: string) => {
 };
 
 /**
- *
+ * Helper function for deleting a single todo
  * @param {Todo[]} arr - The Array of Todo's
  * @param {string} id - The unique id of the todo
  * @returns {Todo[]} A new array without the todo with the given id
@@ -50,4 +43,26 @@ export const deleteTodoHelper = (arr: Todo[], id: string) => {
     return item.id !== id;
   });
   return newArr;
+};
+
+/**
+ * Helper for getting all todo's of a particular category i.e (all, active or completed)
+ * @param {Todo[]} arr
+ * @param {Tabs} tab
+ * @returns Array of Todos for a particular category according to the tab specified
+ */
+export const getTodos = (arr: Todo[], tab: Tabs) => {
+  if (tab === "active") {
+    const activeArr = arr.filter((todo) => {
+      return todo.complete === false;
+    });
+    return activeArr;
+  } else if (tab === "completed") {
+    const completedArr = arr.filter((todo) => {
+      return todo.complete === true;
+    });
+    return completedArr;
+  } else {
+    return arr;
+  }
 };

@@ -1,8 +1,12 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { mockTodos } from "../utils/mock-todos";
-import { changeTodoStatusHelper, deleteTodoHelper } from "../utils/misc";
-import type { Actions, State, Todo, Input } from "../types/todo";
+import {
+  changeTodoStatusHelper,
+  deleteTodoHelper,
+  getTodos,
+} from "../utils/misc";
+import type { Actions, State, Input } from "../types/todo";
 
 export const useTaskStore = create(
   immer<State & Actions>((set, get) => ({
@@ -21,13 +25,9 @@ export const useTaskStore = create(
         if (state.activeTab === "all") {
           state.todos = state.allTodos;
         } else if (state.activeTab === "active") {
-          state.todos = state.allTodos.filter((todo) => {
-            return todo.complete === false;
-          });
+          state.todos = getTodos(state.allTodos, "active");
         } else {
-          state.todos = state.allTodos.filter((todo) => {
-            return todo.complete === true;
-          });
+          state.todos = getTodos(state.allTodos, "completed");
         }
       });
       get().updateActive();
@@ -86,9 +86,7 @@ export const useTaskStore = create(
     },
     setActiveTodos: (): void => {
       set((state) => {
-        const activeTodos = state.allTodos.filter((todo) => {
-          return todo.complete === false;
-        });
+        const activeTodos = getTodos(state.allTodos, "active");
         state.activeTodos = activeTodos;
         state.todos = state.activeTodos;
         state.activeTab = "active";
@@ -96,9 +94,7 @@ export const useTaskStore = create(
     },
     setComletedTodos: (): void => {
       set((state) => {
-        const completedTodos = state.allTodos.filter((todo) => {
-          return todo.complete === true;
-        });
+        const completedTodos = getTodos(state.allTodos, "completed");
         state.completedTodos = completedTodos;
         state.todos = state.completedTodos;
         state.activeTab = "completed";

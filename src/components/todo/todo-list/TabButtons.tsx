@@ -1,8 +1,8 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { useTaskStore } from "../../../stores/task-store";
+import type { Tabs } from "../../../types/todo";
 const btns = ["all", "active", "completed"] as const;
-type Tabs = "all" | "active" | "completed";
 
 const TabButtons = () => {
   const [value, setValue] = useState(0);
