@@ -28,7 +28,7 @@ export const formatItemsLeftText = (active: number): string => {
 /**
  * Helper for toggling any todo's status in any of the categories of todos (All, Active or Completed)
  * @param {Todo[]} arr - The Array of Todo's
- * @param {string} id - The unique id of the todo
+ * @param {string} id - The unique id of the todo whose status is to be changed
  * @returns {Todo[]} A new array with the updated todo
  */
 export const changeTodoStatusHelper = (arr: Todo[], id: string) => {
@@ -74,4 +74,14 @@ export const getTodos = (arr: Todo[], tab: Tabs) => {
   } else {
     return arr;
   }
+};
+
+/**
+ * Helper function for finding index of todo object in given array
+ * @param {Todo[]} arr - Array of Todos
+ * @param {string} id - id of todo object
+ * @returns Index of todo object in the todos array
+ */
+export const findTodoIndex = (arr: Todo[], id: string): number => {
+  return arr.findIndex((todo) => todo.id === id);
 };

@@ -1,5 +1,9 @@
 import { Todo } from "../../../../types/todo";
 import ListItem from "../ListItem";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 
 interface ListProps {
   todos: Todo[];
@@ -8,23 +12,19 @@ interface ListProps {
 
 const ActiveList = ({ setTodoStatus, todos }: ListProps) => {
   return (
-    <>
+    <SortableContext strategy={verticalListSortingStrategy} items={todos}>
       {todos.map(({ id, todo, complete }) => {
         return (
-          <li
+          <ListItem
             key={id}
-            className="border-b border-shadow-light dark:border-dark-txt-1"
-          >
-            <ListItem
-              id={id}
-              todo={todo}
-              complete={complete}
-              setTodoStatus={setTodoStatus}
-            />
-          </li>
+            id={id}
+            todo={todo}
+            complete={complete}
+            setTodoStatus={setTodoStatus}
+          />
         );
       })}
-    </>
+    </SortableContext>
   );
 };
 
