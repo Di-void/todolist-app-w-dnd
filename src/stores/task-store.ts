@@ -6,7 +6,7 @@ import {
   deleteTodoHelper,
   getTodos,
 } from "../utils/misc";
-import type { Actions, State, Input } from "../types/todo";
+import type { Actions, State, Input, Todo } from "../types/todo";
 
 export const useTaskStore = create(
   immer<State & Actions>((set, get) => ({
@@ -16,7 +16,11 @@ export const useTaskStore = create(
     completedTodos: [],
     activeTab: "all",
     active: 0,
-    setTempTodos: (): void => {},
+    reArrangeTodos: (reArrangedTodos: Todo[]): void => {
+      set((state) => {
+        state.todos = reArrangedTodos;
+      });
+    },
     addTodo: (payload: Input): void => {
       set((state) => {
         state.allTodos.push({

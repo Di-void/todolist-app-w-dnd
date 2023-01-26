@@ -11,6 +11,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { restrictToParentElement } from "@dnd-kit/modifiers";
+import { findTodoIndex } from "../../../utils/misc";
 
 //
 const TodoList = () => {
@@ -18,6 +19,7 @@ const TodoList = () => {
   const todos = useTaskStore((state) => state.todos);
   const setTodoStatus = useTaskStore((state) => state.setTodoStatus);
   const active = useTaskStore((state) => state.active);
+  const reArrangeTodos = useTaskStore((state) => state.reArrangeTodos);
   const updateActive = useTaskStore((state) => state.updateActive);
   useEffect(() => {
     updateActive();
@@ -27,6 +29,13 @@ const TodoList = () => {
     const { active, over } = event;
     console.log("ACTIVE: " + active.id);
     console.log("OVER :" + over!.id);
+    if (active.id !== over!.id) {
+      const activeIndex = findTodoIndex(todos, active.id as string);
+      const overIndex = findTodoIndex(todos, over!.id as string);
+      console.log(arrayMove(todos, activeIndex, overIndex));
+
+      reArrangeTodos(arrayMove(todos, activeIndex, overIndex));
+    }
   };
 
   console.log(todos);

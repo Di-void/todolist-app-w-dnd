@@ -17,6 +17,7 @@ const ActiveList = ({ setTodoStatus, todos }: ListProps) => {
       {todos.map(({ id, todo, complete }) => {
         return (
           <ListItem
+            key={id}
             id={id}
             todo={todo}
             complete={complete}

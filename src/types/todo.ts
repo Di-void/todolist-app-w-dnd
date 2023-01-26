@@ -23,7 +23,7 @@ export type State = {
 
 export type Actions = {
   getAllTodos: () => void;
-  setTempTodos: () => void;
+  reArrangeTodos: (reArrangedTodos: Todo[]) => void;
   setActiveTodos: () => void;
   setComletedTodos: () => void;
   deleteCompletedTodos: () => void;
