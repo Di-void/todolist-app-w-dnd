@@ -1,7 +1,6 @@
 import { Todo } from "../../../../types/todo";
 import ListItem from "../ListItem";
 import {
-  arrayMove,
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
