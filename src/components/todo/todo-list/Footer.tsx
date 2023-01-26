@@ -1,4 +1,5 @@
 import { formatItemsLeftText } from "../../../utils/misc";
+import { useTaskStore } from "../../../stores/task-store";
 import TabButtons from "./TabButtons";
 
 interface FooterProps {
@@ -6,6 +7,7 @@ interface FooterProps {
 }
 
 const Footer = ({ active }: FooterProps) => {
+  const clearCompleted = useTaskStore((state) => state.deleteCompletedTodos);
   return (
     <footer className="px-4 py-4 flex justify-between">
       <h4 className="text-shadow-light">
@@ -19,7 +21,10 @@ const Footer = ({ active }: FooterProps) => {
       </div>
       {/* end status tabs (visible from tablet view) */}
 
-      <button className="capitalize text-shadow-light hover:text-shadow-dark dark:hover:text-light-txt-1 transition-all duration-150">
+      <button
+        className="capitalize text-shadow-light hover:text-shadow-dark dark:hover:text-light-txt-1 transition-all duration-150"
+        onClick={clearCompleted}
+      >
         clear completed
       </button>
     </footer>

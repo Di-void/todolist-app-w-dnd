@@ -130,7 +130,14 @@ export const useTaskStore = create(
         state.todos = state.todos.filter((item) => {
           return item.complete === false;
         });
+        state.allTodos = state.allTodos.filter((item) => {
+          return item.complete === false;
+        });
+        state.completedTodos = state.completedTodos.filter((item) => {
+          return item.complete === false;
+        });
       });
+      get().updateActive();
     },
   }))
 );
