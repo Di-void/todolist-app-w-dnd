@@ -11,17 +11,12 @@ const ActiveList = ({ setTodoStatus, todos }: ListProps) => {
     <>
       {todos.map(({ id, todo, complete }) => {
         return (
-          <li
-            key={id}
-            className="border-b border-shadow-light dark:border-dark-txt-1"
-          >
-            <ListItem
-              id={id}
-              todo={todo}
-              complete={complete}
-              setTodoStatus={setTodoStatus}
-            />
-          </li>
+          <ListItem
+            id={id}
+            todo={todo}
+            complete={complete}
+            setTodoStatus={setTodoStatus}
+          />
         );
       })}
     </>

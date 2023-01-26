@@ -16,6 +16,7 @@ export const useTaskStore = create(
     completedTodos: [],
     activeTab: "all",
     active: 0,
+    setTempTodos: (): void => {},
     addTodo: (payload: Input): void => {
       set((state) => {
         state.allTodos.push({

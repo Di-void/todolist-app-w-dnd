@@ -28,7 +28,7 @@ export const formatItemsLeftText = (active: number): string => {
 /**
  * Helper for toggling any todo's status in any of the categories of todos (All, Active or Completed)
  * @param {Todo[]} arr - The Array of Todo's
- * @param {string} id - The unique id of the todo
+ * @param {string} id - The unique id of the todo whose status is to be changed
  * @returns {Todo[]} A new array with the updated todo
  */
 export const changeTodoStatusHelper = (arr: Todo[], id: string) => {

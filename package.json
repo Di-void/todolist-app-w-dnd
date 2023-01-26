@@ -9,6 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.0.7",
+    "@dnd-kit/modifiers": "^6.0.1",
+    "@dnd-kit/sortable": "^7.0.2",
+    "@dnd-kit/utilities": "^3.2.1",
     "clsx": "^1.2.1",
     "immer": "^9.0.18",
     "jotai": "^1.13.1",
