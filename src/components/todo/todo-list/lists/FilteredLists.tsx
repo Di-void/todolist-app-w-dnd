@@ -1,10 +1,6 @@
 import { Todo } from "../../../../types/todo";
 import ListItem from "../ListItem";
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-
+import SortableWrapper from "../../../../utils/SortableWrapper";
 interface ListProps {
   todos: Todo[];
   setTodoStatus: (id: Todo["id"]) => void;
@@ -12,7 +8,7 @@ interface ListProps {
 
 const FilteredLists = ({ setTodoStatus, todos }: ListProps) => {
   return (
-    <SortableContext strategy={verticalListSortingStrategy} items={todos}>
+    <SortableWrapper items={todos}>
       {todos.map(({ id, todo, complete }) => {
         return (
           <ListItem
@@ -24,7 +20,7 @@ const FilteredLists = ({ setTodoStatus, todos }: ListProps) => {
           />
         );
       })}
-    </SortableContext>
+    </SortableWrapper>
   );
 };
 

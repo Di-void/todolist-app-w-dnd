@@ -3,12 +3,9 @@ import Footer from "./Footer";
 import ListItem from "./ListItem";
 import { useTaskStore } from "../../../stores/task-store";
 import FilteredLists from "./lists/FilteredLists";
+import SortableWrapper from "../../../utils/SortableWrapper";
 import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
-import {
-  arrayMove,
-  SortableContext,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
+import { arrayMove } from "@dnd-kit/sortable";
 import { restrictToParentElement } from "@dnd-kit/modifiers";
 import { findTodoIndex } from "../../../utils/misc";
 
@@ -52,10 +49,7 @@ const TodoList = () => {
             ) : activeTab === "completed" ? (
               <FilteredLists todos={todos} setTodoStatus={setTodoStatus} />
             ) : (
-              <SortableContext
-                items={todos}
-                strategy={verticalListSortingStrategy}
-              >
+              <SortableWrapper items={todos}>
                 {todos.map(({ id, todo, complete }) => {
                   return (
                     <ListItem
@@ -67,7 +61,7 @@ const TodoList = () => {
                     />
                   );
                 })}
-              </SortableContext>
+              </SortableWrapper>
             )}
           </ul>
         </DndContext>
