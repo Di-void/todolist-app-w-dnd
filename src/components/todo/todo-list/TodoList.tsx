@@ -2,14 +2,10 @@ import { useEffect } from "react";
 import Footer from "./Footer";
 import ListItem from "./ListItem";
 import { useTaskStore } from "../../../stores/task-store";
-import ActiveList from "./lists/ActiveList";
-import CompletedList from "./lists/CompletedList";
+import FilteredLists from "./lists/FilteredLists";
+import SortableWrapper from "../../../utils/SortableWrapper";
 import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
-import {
-  arrayMove,
-  SortableContext,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
+import { arrayMove } from "@dnd-kit/sortable";
 import { restrictToParentElement } from "@dnd-kit/modifiers";
 import { findTodoIndex } from "../../../utils/misc";
 
@@ -27,12 +23,9 @@ const TodoList = () => {
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-    // console.log("ACTIVE: " + active.id);
-    // console.log("OVER :" + over!.id);
     if (active.id !== over!.id) {
       const activeIndex = findTodoIndex(todos, active.id as string);
       const overIndex = findTodoIndex(todos, over!.id as string);
-      // console.log(arrayMove(todos, activeIndex, overIndex));
       reArrangeTodos(arrayMove(todos, activeIndex, overIndex));
     }
   };
@@ -40,7 +33,7 @@ const TodoList = () => {
   console.log(todos);
 
   return (
-    <article className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black">
+    <article className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black overflow-hidden">
       {
         <DndContext
           collisionDetection={closestCenter}
@@ -49,14 +42,11 @@ const TodoList = () => {
         >
           <ul className="flex flex-col-reverse bg-elem-light dark:bg-elem-dark-1">
             {activeTab === "active" ? (
-              <ActiveList setTodoStatus={setTodoStatus} todos={todos} />
+              <FilteredLists setTodoStatus={setTodoStatus} todos={todos} />
             ) : activeTab === "completed" ? (
-              <CompletedList todos={todos} setTodoStatus={setTodoStatus} />
+              <FilteredLists todos={todos} setTodoStatus={setTodoStatus} />
             ) : (
-              <SortableContext
-                items={todos}
-                strategy={verticalListSortingStrategy}
-              >
+              <SortableWrapper items={todos}>
                 {todos.map(({ id, todo, complete }) => {
                   return (
                     <ListItem
@@ -68,7 +58,7 @@ const TodoList = () => {
                     />
                   );
                 })}
-              </SortableContext>
+              </SortableWrapper>
             )}
           </ul>
         </DndContext>

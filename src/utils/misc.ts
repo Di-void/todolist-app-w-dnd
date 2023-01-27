@@ -26,12 +26,32 @@ export const formatItemsLeftText = (active: number): string => {
 };
 
 /**
- * Helper for toggling any todo's status in any of the categories of todos (All, Active or Completed)
+ * Helper for changing a todo's status in any given tab (all, active, completed). If the current tab is all, 
+the todo's status will be changed normally but If the current tab is not all, the todo will be removed from the array that is 
+passed as an argument. This behavior is because when we change a todo's status in either active or completed tabs, 
+it becomes the opposite. The return value will therefore be only that of either active or completed todos.
  * @param {Todo[]} arr - The Array of Todo's
  * @param {string} id - The unique id of the todo whose status is to be changed
- * @returns {Todo[]} A new array with the updated todo
+ * @param {Tabs} tab - The current tab user is on
+ * @returns {Todo[]} A new array with the updated todo or an Array with < 1 todo.
  */
-export const changeTodoStatusHelper = (arr: Todo[], id: string) => {
+export const changeTodoStatusHelper = (
+  arr: Todo[],
+  id: string,
+  tab: Tabs = "all"
+) => {
+  if (tab === "active") {
+    const newArr = arr.filter((todo) => {
+      return todo.id !== id;
+    });
+    return newArr;
+  }
+  if (tab === "completed") {
+    const newArr = arr.filter((todo) => {
+      return todo.id !== id;
+    });
+    return newArr;
+  }
   const newArr: Todo[] = arr.map((todo) => {
     if (todo.id === id) {
       return { ...todo, complete: !todo.complete };
@@ -47,7 +67,7 @@ export const changeTodoStatusHelper = (arr: Todo[], id: string) => {
  * @param {string} id - The unique id of the todo
  * @returns {Todo[]} A new array without the todo with the given id
  */
-export const deleteTodoHelper = (arr: Todo[], id: string) => {
+export const deleteSingleTodoHelper = (arr: Todo[], id: string) => {
   const newArr: Todo[] = arr.filter((item) => {
     return item.id !== id;
   });
@@ -55,7 +75,18 @@ export const deleteTodoHelper = (arr: Todo[], id: string) => {
 };
 
 /**
- * Helper for getting all todo's of a particular category i.e (all, active or completed)
+ * Helper for deleting all completed todo's from any array of todos
+ * @param {Todo[]} arr - Array of all todo's
+ * @returns Array with only active Todos
+ */
+export const deleteCompletedTodosHelper = (arr: Todo[]) => {
+  return arr.filter((item) => {
+    return item.complete === false;
+  });
+};
+
+/**
+ * Filter function for getting all todo's of a particular category i.e (all, active or completed)
  * @param {Todo[]} arr - Array of all Todos
  * @param {Tabs} tab - The active tab
  * @returns Array of Todos for a particular category according to the tab specified
