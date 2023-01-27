@@ -26,12 +26,32 @@ export const formatItemsLeftText = (active: number): string => {
 };
 
 /**
- * Helper for toggling any todo's status in any of the categories of todos (All, Active or Completed)
+ * Helper for changing a todo's status in any given tab (all, active, completed). If the current tab is all, 
+the todo's status will be changed normally but If the current tab is not all, the todo will be removed from the array that is 
+passed as an argument. This behavior is because when we change a todo's status in either active or completed tabs, 
+it becomes the opposite. The return value will therefore be only that of either active or completed todos.
  * @param {Todo[]} arr - The Array of Todo's
  * @param {string} id - The unique id of the todo whose status is to be changed
- * @returns {Todo[]} A new array with the updated todo
+ * @param {Tabs} tab - The current tab user is on
+ * @returns {Todo[]} A new array with the updated todo or an Array with < 1 todo.
  */
-export const changeTodoStatusHelper = (arr: Todo[], id: string) => {
+export const changeTodoStatusHelper = (
+  arr: Todo[],
+  id: string,
+  tab: Tabs = "all"
+) => {
+  if (tab === "active") {
+    const newArr = arr.filter((todo) => {
+      return todo.id !== id;
+    });
+    return newArr;
+  }
+  if (tab === "completed") {
+    const newArr = arr.filter((todo) => {
+      return todo.id !== id;
+    });
+    return newArr;
+  }
   const newArr: Todo[] = arr.map((todo) => {
     if (todo.id === id) {
       return { ...todo, complete: !todo.complete };

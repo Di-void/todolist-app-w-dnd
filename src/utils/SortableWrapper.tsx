@@ -10,6 +10,8 @@ interface SortableWrapperProps {
   children: ReactNode;
 }
 
+// Single Instance of Sortable Context - Pass around
+
 const SortableWrapper = ({ items, children }: SortableWrapperProps) => {
   return (
     <SortableContext items={items} strategy={verticalListSortingStrategy}>
