@@ -23,12 +23,9 @@ const TodoList = () => {
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-    // console.log("ACTIVE: " + active.id);
-    // console.log("OVER :" + over!.id);
     if (active.id !== over!.id) {
       const activeIndex = findTodoIndex(todos, active.id as string);
       const overIndex = findTodoIndex(todos, over!.id as string);
-      // console.log(arrayMove(todos, activeIndex, overIndex));
       reArrangeTodos(arrayMove(todos, activeIndex, overIndex));
     }
   };

@@ -116,8 +116,11 @@ export const useTaskStore = create(
       set((state) => {
         if (state.activeTab === "all") {
           state.allTodos = deleteSingleTodoHelper(state.todos, id);
-          state.activeTodos = getTodos(state.allTodos, "active");
-          // state.completedTodos = getTodos(state.allTodos, "active");
+          state.activeTodos = deleteSingleTodoHelper(state.activeTodos, id);
+          state.completedTodos = deleteSingleTodoHelper(
+            state.completedTodos,
+            id
+          );
           state.todos = state.allTodos;
         } else if (state.activeTab === "active") {
           // update all todos
