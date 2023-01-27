@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import Footer from "./Footer";
 import ListItem from "./ListItem";
 import { useTaskStore } from "../../../stores/task-store";
-import ActiveList from "./lists/ActiveList";
-import CompletedList from "./lists/CompletedList";
+import FilteredLists from "./lists/FilteredLists";
 import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -49,9 +48,9 @@ const TodoList = () => {
         >
           <ul className="flex flex-col-reverse bg-elem-light dark:bg-elem-dark-1">
             {activeTab === "active" ? (
-              <ActiveList setTodoStatus={setTodoStatus} todos={todos} />
+              <FilteredLists setTodoStatus={setTodoStatus} todos={todos} />
             ) : activeTab === "completed" ? (
-              <CompletedList todos={todos} setTodoStatus={setTodoStatus} />
+              <FilteredLists todos={todos} setTodoStatus={setTodoStatus} />
             ) : (
               <SortableContext
                 items={todos}

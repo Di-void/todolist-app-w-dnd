@@ -10,7 +10,7 @@ interface ListProps {
   setTodoStatus: (id: Todo["id"]) => void;
 }
 
-const ActiveList = ({ setTodoStatus, todos }: ListProps) => {
+const FilteredLists = ({ setTodoStatus, todos }: ListProps) => {
   return (
     <SortableContext strategy={verticalListSortingStrategy} items={todos}>
       {todos.map(({ id, todo, complete }) => {
@@ -28,4 +28,4 @@ const ActiveList = ({ setTodoStatus, todos }: ListProps) => {
   );
 };
 
-export default ActiveList;
+export default FilteredLists;
