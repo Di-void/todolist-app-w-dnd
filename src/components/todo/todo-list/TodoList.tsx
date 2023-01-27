@@ -36,7 +36,7 @@ const TodoList = () => {
   console.log(todos);
 
   return (
-    <article className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black">
+    <article className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black overflow-hidden">
       {
         <DndContext
           collisionDetection={closestCenter}

@@ -2,7 +2,8 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import {
   changeTodoStatusHelper,
-  deleteTodoHelper,
+  deleteSingleTodoHelper,
+  deleteCompletedTodosHelper,
   getTodos,
 } from "../utils/misc";
 import type { Actions, State, Input, Todo } from "../types/todo";
@@ -57,25 +58,25 @@ export const useTaskStore = create(
         } else if (state.activeTab === "active") {
           // update all todos
           state.allTodos = changeTodoStatusHelper(state.allTodos, id);
-          //
           state.activeTodos = changeTodoStatusHelper(
             getTodos(state.allTodos, "active"),
             id,
             "active"
           );
           state.todos = state.activeTodos;
+
           // update completed todos
           state.completedTodos = getTodos(state.allTodos, "completed");
         } else {
           // update all todos
           state.allTodos = changeTodoStatusHelper(state.allTodos, id);
-          //
           state.completedTodos = changeTodoStatusHelper(
             getTodos(state.allTodos, "completed"),
             id,
             "completed"
           );
           state.todos = state.completedTodos;
+
           // update active todos
           state.activeTodos = getTodos(state.allTodos, "active");
         }
@@ -101,16 +102,12 @@ export const useTaskStore = create(
     },
     setActiveTodos: (): void => {
       set((state) => {
-        // const activeTodos = getTodos(state.allTodos, "active");
-        // state.activeTodos = activeTodos;
         state.todos = state.activeTodos;
         state.activeTab = "active";
       });
     },
     setComletedTodos: (): void => {
       set((state) => {
-        // const completedTodos = getTodos(state.allTodos, "completed");
-        // state.completedTodos = completedTodos;
         state.todos = state.completedTodos;
         state.activeTab = "completed";
       });
@@ -118,39 +115,35 @@ export const useTaskStore = create(
     deleteTodo: (id: string): void => {
       set((state) => {
         if (state.activeTab === "all") {
-          state.todos = deleteTodoHelper(state.todos, id);
-          state.allTodos = state.todos;
+          state.allTodos = deleteSingleTodoHelper(state.todos, id);
+          state.activeTodos = getTodos(state.allTodos, "active");
+          // state.completedTodos = getTodos(state.allTodos, "active");
+          state.todos = state.allTodos;
         } else if (state.activeTab === "active") {
-          state.activeTodos = deleteTodoHelper(state.activeTodos, id);
+          // update all todos
+          state.allTodos = deleteSingleTodoHelper(state.allTodos, id);
+          state.activeTodos = getTodos(state.allTodos, "active");
           state.todos = state.activeTodos;
 
-          // update all todos
-          state.allTodos = deleteTodoHelper(state.allTodos, id);
           // update completed todos
-          state.completedTodos = deleteTodoHelper(state.completedTodos, id);
+          state.completedTodos = getTodos(state.allTodos, "completed");
         } else {
-          state.completedTodos = deleteTodoHelper(state.completedTodos, id);
+          // update all todos
+          state.allTodos = deleteSingleTodoHelper(state.allTodos, id);
+          state.completedTodos = getTodos(state.allTodos, "completed");
           state.todos = state.completedTodos;
 
-          // update all todos
-          state.allTodos = deleteTodoHelper(state.allTodos, id);
           // update active todos
-          state.activeTodos = deleteTodoHelper(state.activeTodos, id);
+          state.activeTodos = getTodos(state.allTodos, "active");
         }
       });
       get().updateActive();
     },
     deleteCompletedTodos: (): void => {
       set((state) => {
-        state.todos = state.todos.filter((item) => {
-          return item.complete === false;
-        });
-        state.allTodos = state.allTodos.filter((item) => {
-          return item.complete === false;
-        });
-        state.completedTodos = state.completedTodos.filter((item) => {
-          return item.complete === false;
-        });
+        state.allTodos = deleteCompletedTodosHelper(state.allTodos);
+        state.todos = deleteCompletedTodosHelper(state.todos);
+        state.completedTodos = [];
       });
       get().updateActive();
     },
