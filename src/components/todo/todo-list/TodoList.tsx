@@ -30,17 +30,17 @@ const TodoList = () => {
     }
   };
 
-  console.log(todos);
+  // console.log(todos);
 
   return (
-    <article className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black overflow-hidden">
+    <div className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black overflow-hidden">
       {
         <DndContext
           collisionDetection={closestCenter}
           modifiers={[restrictToParentElement]}
           onDragEnd={handleDragEnd}
         >
-          <ul className="flex flex-col-reverse bg-elem-light dark:bg-elem-dark-1">
+          <ul className="flex flex-col-reverse bg-elem-light dark:bg-elem-dark-1 max-h-60 overflow-auto">
             {activeTab === "active" ? (
               <FilteredLists setTodoStatus={setTodoStatus} todos={todos} />
             ) : activeTab === "completed" ? (
@@ -66,7 +66,7 @@ const TodoList = () => {
 
       {/* FOOTER (DISPLAY ITEMS INFO) */}
       <Footer active={active} />
-    </article>
+    </div>
   );
 };
 
