@@ -52,33 +52,31 @@ export const useTaskStore = create(
       set((state) => {
         if (state.activeTab === "all") {
           state.allTodos = changeTodoStatusHelper(state.allTodos, id);
-          state.todos = state.allTodos;
           state.activeTodos = getTodos(state.allTodos, "active");
           state.completedTodos = getTodos(state.allTodos, "completed");
+          state.todos = state.allTodos;
         } else if (state.activeTab === "active") {
           // update all todos
           state.allTodos = changeTodoStatusHelper(state.allTodos, id);
+          // update completed todos
+          state.completedTodos = getTodos(state.allTodos, "completed");
           state.activeTodos = changeTodoStatusHelper(
             getTodos(state.allTodos, "active"),
             id,
             "active"
           );
           state.todos = state.activeTodos;
-
-          // update completed todos
-          state.completedTodos = getTodos(state.allTodos, "completed");
         } else {
           // update all todos
           state.allTodos = changeTodoStatusHelper(state.allTodos, id);
+          // update active todos
+          state.activeTodos = getTodos(state.allTodos, "active");
           state.completedTodos = changeTodoStatusHelper(
             getTodos(state.allTodos, "completed"),
             id,
             "completed"
           );
           state.todos = state.completedTodos;
-
-          // update active todos
-          state.activeTodos = getTodos(state.allTodos, "active");
         }
       });
       get().updateActive();
