@@ -63,7 +63,7 @@ const ListItem: React.FC<ListItemProps> = ({
 
         {/* /Drag and Drop Handle */}
         <button
-          className="hover:bg-slate-400/20 hover:dark:bg-light-txt-3/10 rounded-sm hover:cursor-grab active:cursor-grabbing text-light-txt-2 dark:text-light-txt-1 flex place-content-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-150"
+          className="hover:bg-slate-400/20 touch-none hover:dark:bg-light-txt-3/10 rounded-sm hover:cursor-grab active:cursor-grabbing text-light-txt-2 dark:text-light-txt-1 flex place-content-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-150"
           {...listeners}
           title="Drag n Drop"
         >
