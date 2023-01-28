@@ -86,7 +86,7 @@ export const deleteCompletedTodosHelper = (arr: Todo[]) => {
 };
 
 /**
- * Filter function for getting all todo's of a particular category i.e (all, active or completed)
+ * Filter function for getting all active or completed todos from (all todos)
  * @param {Todo[]} arr - Array of all Todos
  * @param {Tabs} tab - The active tab
  * @returns Array of Todos for a particular category according to the tab specified
