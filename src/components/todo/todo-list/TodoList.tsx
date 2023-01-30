@@ -4,8 +4,16 @@ import ListItem from "./ListItem";
 import { useTaskStore } from "../../../stores/task-store";
 import FilteredLists from "./lists/FilteredLists";
 import SortableWrapper from "../../../utils/SortableWrapper";
-import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
-import { arrayMove } from "@dnd-kit/sortable";
+import {
+  DndContext,
+  closestCenter,
+  DragEndEvent,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { restrictToParentElement } from "@dnd-kit/modifiers";
 import { findTodoIndex } from "../../../utils/misc";
 
@@ -17,6 +25,12 @@ const TodoList = () => {
   const active = useTaskStore((state) => state.active);
   const reArrangeTodos = useTaskStore((state) => state.reArrangeTodos);
   const updateActive = useTaskStore((state) => state.updateActive);
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
   useEffect(() => {
     updateActive();
   }, []);
@@ -30,17 +44,18 @@ const TodoList = () => {
     }
   };
 
-  console.log(todos);
+  // console.log(todos);
 
   return (
-    <article className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black overflow-hidden">
+    <div className="bg-elem-light dark:bg-elem-dark-1 mt-5 mb-5 rounded-md shadow-2xl shadow-shadow-light dark:shadow-black overflow-hidden">
       {
         <DndContext
+          sensors={sensors}
           collisionDetection={closestCenter}
           modifiers={[restrictToParentElement]}
           onDragEnd={handleDragEnd}
         >
-          <ul className="flex flex-col-reverse bg-elem-light dark:bg-elem-dark-1">
+          <ul className="flex flex-col-reverse bg-elem-light dark:bg-elem-dark-1 overflow-auto">
             {activeTab === "active" ? (
               <FilteredLists setTodoStatus={setTodoStatus} todos={todos} />
             ) : activeTab === "completed" ? (
@@ -66,7 +81,7 @@ const TodoList = () => {
 
       {/* FOOTER (DISPLAY ITEMS INFO) */}
       <Footer active={active} />
-    </article>
+    </div>
   );
 };
 

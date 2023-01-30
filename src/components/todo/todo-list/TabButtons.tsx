@@ -32,6 +32,7 @@ const TabButtons = () => {
         <button
           key={index}
           data-id={item}
+          title={`${item} todos`}
           className={clsx(
             "capitalize text-light-txt-4 dark:text-shadow-light hover:text-shadow-dark dark:hover:text-light-txt-1 transition-all duration-150 font-semibold",
             index === value &&
