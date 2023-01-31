@@ -56,7 +56,7 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [Typescript](https://www.typescriptlang.org/docs/handbook/intro.html) - Typescript
 - [Tailwind Css](https://tailwindcss.com/docs/installation) - For styles
-- [Zustand] - (https://github.com/pmndrs/zustand) - State Management Library
+- [Zustand](https://github.com/pmndrs/zustand) - State Management Library
 
 ### What I learned
 
