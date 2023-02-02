@@ -48,10 +48,12 @@ Users should be able to:
 
 ### Commands
 
-Feel free to fork or clone directly :). You could drop a star if you like the solution 💙
+Feel free to fork or clone directly :). You could drop a star too if you like the solution 💙
+
+**Note: With the following commands, project will clone inside current directory.**
 
 ```
-git clone https://github.com/Multimarix/todolist-app-w-dnd.git
+git clone https://github.com/Multimarix/todolist-app-w-dnd.git .
 
 npm install
 
