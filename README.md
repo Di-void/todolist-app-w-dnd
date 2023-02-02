@@ -54,9 +54,7 @@ Feel free to fork or clone directly :). You could drop a star too if you like th
 
 ```
 git clone https://github.com/Multimarix/todolist-app-w-dnd.git .
-
 npm install
-
 npm run dev
 ```
 
