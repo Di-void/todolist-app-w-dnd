@@ -43,7 +43,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [My Solution on Frontend Mentor](https://your-solution-url.com)
+- Solution URL: [My Solution on Frontend Mentor](https://www.frontendmentor.io/solutions/todolist-app-with-react-tailwind-css-ts-and-dndkit-D1TAcEafnU)
 - Live Site URL: [Live Site](https://dees-todolist.netlify.app/)
 
 ### Commands
