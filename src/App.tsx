@@ -2,7 +2,7 @@ import { BgImage, Main } from "./components";
 
 function App() {
   return (
-    <main className="min-h-screen bg-light relative dark:bg-dark border-">
+    <main className="min-h-screen bg-light relative dark:bg-dark">
       <BgImage />
       <Main />
       <div className="text-xs w-[380px] mt-9 mx-auto text-center md:text-sm text-light-txt-4 dark:text-light-txt-2">

@@ -34,9 +34,9 @@ const TabButtons = () => {
           data-id={item}
           title={`${item} todos`}
           className={clsx(
-            "capitalize text-light-txt-4 dark:text-shadow-light hover:text-shadow-dark dark:hover:text-light-txt-1 transition-all duration-150 font-semibold",
             index === value &&
-              "text-active-blue dark:text-active-blue hover:text-active-blue dark:hover:text-active-blue"
+              "text-active-blue hover:text-active-blue dark:hover:text-active-blue",
+            "capitalize text-light-txt-4  hover:text-shadow-dark dark:hover:text-light-txt-1 transition-all duration-150 font-semibold"
           )}
           onClick={(e) => handleChange(e, index)}
         >
