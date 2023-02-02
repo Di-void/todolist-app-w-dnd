@@ -50,13 +50,13 @@ Users should be able to:
 
 Feel free to fork or clone directly :). You could drop a star if you like the solution 💙
 
-`
+```
 git clone https://github.com/Multimarix/todolist-app-w-dnd.git
 
 npm install
 
 npm run dev
-`
+```
 
 ## My process
 
