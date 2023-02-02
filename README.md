@@ -10,6 +10,7 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
     - [The challenge](#the-challenge)
     - [Screenshot](#screenshot)
     - [Links](#links)
+    - [Commands](#commands)
   - [My process](#my-process)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
@@ -44,6 +45,18 @@ Users should be able to:
 
 - Solution URL: [My Solution on Frontend Mentor](https://your-solution-url.com)
 - Live Site URL: [Live Site](https://dees-todolist.netlify.app/)
+
+### Commands
+
+Feel free to fork or clone directly :). You could drop a star too if you like the solution 💙
+
+**Note: With the following commands, project will clone inside current directory.**
+
+```
+git clone https://github.com/Multimarix/todolist-app-w-dnd.git .
+npm install
+npm run dev
+```
 
 ## My process
 
