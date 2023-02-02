@@ -4,6 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: theme(colors.elem-dark-1) theme(colors.elem-dark-2);
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: theme(colors.elem-dark-1);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: theme(colors.elem-dark-2);
+  border-radius: 14px;
+}
+
 @layer base {
   html {
     font-family: "Josefin Sans", sans-serif;
