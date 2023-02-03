@@ -5,7 +5,7 @@ function App() {
     <main className="min-h-screen bg-light relative dark:bg-dark">
       <BgImage />
       <Main />
-      <div className="text-xs w-[380px] mt-9 mx-auto text-center md:text-sm text-light-txt-4 dark:text-light-txt-2">
+      <div className="text-xs w-fit mt-9 mx-auto text-center md:text-sm text-light-txt-4 dark:text-light-txt-2">
         Challenge by{" "}
         <a
           href="https://www.frontendmentor.io?ref=challenge"
