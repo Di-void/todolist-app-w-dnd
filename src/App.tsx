@@ -16,7 +16,7 @@ function App() {
         </a>
         . Coded by{" "}
         <a
-          href="https://github.com/Multimarix"
+          href="https://github.com/Di-void"
           className="text-dark dark:text-active-blue"
           target="_blank"
         >
