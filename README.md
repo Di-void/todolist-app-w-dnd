@@ -102,7 +102,7 @@ To be honest, this is not where I want this project to finally be. I plan to tin
 
 ## Author
 
-- Github - [Multimarix](https://github.com/Multimarix)
+- Github - [Di-void](https://github.com/Di-void)
 - Frontend Mentor - [@Multimarix](https://www.frontendmentor.io/profile/Multimarix)
 - LinkedIN - [Don Akhirebhulu](https://www.linkedin.com/in/don-akhirebhulu-675082242/)
 
