@@ -29,6 +29,7 @@ const Input = () => {
     <form
       className="px-4 py-2 mt-8 bg-elem-light dark:bg-elem-dark-1 flex items-center gap-x-3 rounded-md"
       onSubmit={addNewTodo}
+      name="input-form"
     >
       {/* checkbox */}
       <div className="rounded-full relative">
