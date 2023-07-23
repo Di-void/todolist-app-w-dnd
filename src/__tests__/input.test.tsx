@@ -1,5 +1,5 @@
-import { render, screen, within, userEvent } from "../../../utils/test-utils";
-import Input from "./Input";
+import { render, screen, within, userEvent } from "@/utils/test-utils";
+import Input from "@/components/todo/input/Input";
 
 // SUITE
 describe("Input Form Component", () => {
