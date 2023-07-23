@@ -1,5 +1,5 @@
-import { formatItemsLeftText } from "../../../utils/misc";
-import { useTaskStore } from "../../../stores/task-store";
+import { formatItemsLeftText } from "@/utils/misc";
+import { useTaskStore } from "@/stores/task-store";
 import TabButtons from "./TabButtons";
 
 interface FooterProps {

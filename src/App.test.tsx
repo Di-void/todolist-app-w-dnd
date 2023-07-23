@@ -2,7 +2,7 @@ import App from "./App";
 import { render, screen } from "./utils/test-utils";
 
 // SUITE
-describe.skip("Simple working test", () => {
+describe("Simple working test", () => {
   // TEST
   it("the title is visible", () => {
     // ARRANGE

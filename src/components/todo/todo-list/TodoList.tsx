@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import Footer from "./Footer";
 import ListItem from "./ListItem";
-import { useTaskStore } from "../../../stores/task-store";
+import { useTaskStore } from "@/stores/task-store";
 import FilteredLists from "./lists/FilteredLists";
-import SortableWrapper from "../../../utils/SortableWrapper";
+import SortableWrapper from "@/utils/SortableWrapper";
 import {
   DndContext,
   closestCenter,
@@ -15,7 +15,7 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { restrictToParentElement } from "@dnd-kit/modifiers";
-import { findTodoIndex } from "../../../utils/misc";
+import { findTodoIndex } from "@/utils/misc";
 
 //
 const TodoList = () => {

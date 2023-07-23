@@ -1,6 +1,6 @@
-import { Todo } from "../../../../types/todo";
+import { Todo } from "@/types/todo";
 import ListItem from "../ListItem";
-import SortableWrapper from "../../../../utils/SortableWrapper";
+import SortableWrapper from "@/utils/SortableWrapper";
 interface ListProps {
   todos: Todo[];
   setTodoStatus: (id: Todo["id"]) => void;
