@@ -19,7 +19,7 @@ describe("Input Form Component", () => {
 });
 
 // SUITE
-describe("Submitting Input Form on Enter", () => {
+describe("Enter text in input form", () => {
   it("input has focus and can be updated", async () => {
     const user = userEvent.setup();
     // arrange
