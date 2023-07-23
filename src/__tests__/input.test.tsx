@@ -6,9 +6,9 @@ describe("Input Form Component", () => {
   // TEST
   it("textbox and checkbox render", () => {
     // arrange
-    const { getByRole } = render(<Input />);
+    render(<Input />);
 
-    const formElement = getByRole("form");
+    const formElement = screen.getByRole("form");
     const checkbox = within(formElement).getByRole("checkbox");
     const inputField = within(formElement).getByRole("textbox");
 
@@ -23,8 +23,8 @@ describe("Enter text in input form", () => {
   it("input has focus and can be updated", async () => {
     const user = userEvent.setup();
     // arrange
-    const { getByRole } = render(<Input />);
-    const formElement = getByRole("form");
+    render(<Input />);
+    const formElement = screen.getByRole("form");
     const inputField = within(formElement).getByRole("textbox");
     inputField.focus();
     expect(inputField).toHaveFocus();
