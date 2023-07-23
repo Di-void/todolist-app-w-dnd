@@ -1,8 +1,8 @@
 import { useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { HiSun, HiMoon } from "react-icons/hi";
-import type { Theme } from "../../../types/todo";
-import { switchTheme } from "../../../utils/misc";
+import type { Theme } from "@/types/todo";
+import { switchTheme } from "@/utils/misc";
 
 export const themeAtom = atomWithStorage<Theme>("theme", "light");
 

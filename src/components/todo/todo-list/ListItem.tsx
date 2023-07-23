@@ -1,8 +1,8 @@
-import { Todo } from "../../../types/todo";
+import { Todo } from "@/types/todo";
 import clsx from "clsx";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { useTaskStore } from "../../../stores/task-store";
+import { useTaskStore } from "@/stores/task-store";
 
 interface ListItemProps {
   id: Todo["id"];

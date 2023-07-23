@@ -1,7 +1,7 @@
 import { useState } from "react";
 import clsx from "clsx";
-import { useTaskStore } from "../../../stores/task-store";
-import type { Tabs } from "../../../types/todo";
+import { useTaskStore } from "@/stores/task-store";
+import type { Tabs } from "@/types/todo";
 const btns = ["all", "active", "completed"] as const;
 
 const TabButtons = () => {
