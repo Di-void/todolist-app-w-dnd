@@ -11,6 +11,7 @@ const Input = () => {
 
   const addNewTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    if (!inputRef.current?.value.trim()) return;
     if (inputRef.current?.value) {
       addTodo({
         todo: inputRef.current.value,
